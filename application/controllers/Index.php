@@ -2,6 +2,8 @@
 
 class IndexController extends Yaf\Controller_Abstract {
     public function indexAction() {//默认Action
-        $this->getView()->assign("content", 'Hi');
+        $db = \Yaf\Registry::get('db');
+        $res = $db->select('t_admin','*');
+        $this->getView()->assign("content", $res);
     }
 }
